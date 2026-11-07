@@ -514,7 +514,7 @@ h1, h2, h3, p { margin: 0; }
 .foot__soft { color: var(--sc-ink-soft) !important; margin-top: var(--sc-2); font-size: var(--sc-t-sm); }
 @media (hover: hover) and (pointer: fine) { .foot__col a:hover, .foot__up:hover { color: var(--sc-accent); text-decoration: underline; text-underline-offset: 0.25em; } }
 .foot__bottom {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1.5rem;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2.5rem;
   margin-top: var(--sc-8); padding-top: var(--sc-4); border-top: 1px solid var(--sc-hairline);
   color: var(--sc-ink-soft); font-size: var(--sc-t-xs);
 }
@@ -527,7 +527,9 @@ h1, h2, h3, p { margin: 0; }
   .site-foot { padding-block: var(--sc-7) var(--sc-4); }
   .foot__top { gap: var(--sc-6) var(--sc-4); }
   .foot__col:last-child { grid-column: 1 / -1; }
-  .foot__bottom { flex-direction: column; align-items: flex-start; margin-top: var(--sc-6); }
+  .foot__bottom { flex-direction: column; align-items: flex-start; gap: 1.5rem; margin-top: var(--sc-6); }
+  .foot__legal { flex-direction: column; gap: 0.6rem; }
+  .foot__legal a, .foot__up { min-height: 2.75rem; }
 }
 
 /* -------------------------------------------------------- the docket -- */
@@ -604,5 +606,6 @@ h1, h2, h3, p { margin: 0; }
 .book__note { text-align: center; }
 .book__call { text-align: center; color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
 .book__call a { color: var(--sc-ink); font-weight: 700; text-decoration: underline; text-underline-offset: 0.25em; display: inline-flex; align-items: center; min-height: var(--tap); white-space: nowrap; }
+.foot__credit { display: block; margin-top: 0.5rem; }
 .foot__credit a { color: inherit; font-weight: 600; }
 .foot__credit a:hover { color: var(--sc-accent); }

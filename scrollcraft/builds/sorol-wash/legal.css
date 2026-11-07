@@ -10,5 +10,5 @@ body.legal-page .site-bar { position: sticky; }
 .legal li { margin-bottom: 0.45rem; }
 .legal a { color: var(--sc-accent); text-decoration: underline; text-underline-offset: 0.25em; }
 .legal__meta { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin-bottom: 2rem; }
-.foot__legal { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.foot__legal { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; }
 .foot__legal a { color: var(--sc-ink); text-decoration: underline; text-underline-offset: 0.25em; min-height: var(--tap); display: inline-flex; align-items: center; }
