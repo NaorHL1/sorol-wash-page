@@ -97,3 +97,7 @@ Every adjacent act produces a distinct emotion. No two adjacent acts share a fee
 ## Update: two pairs, new polish card photo (2026-11-07)
 - Before/after is down to two pairs: Suzuki (colour enhancement and full detailing) and Hyundai interior. The Hyundai exterior pair was removed.
 - The "השבחת צבע ודיטיילינג מלא" service card now shows a full-car photo (Suzuki, rear three-quarter, plate blurred) that is not used anywhere else on the page.
+
+## Update: act 4 played by scroll again, now without dead stretches (2026-11-07)
+- One pinned scene: Suzuki seam sweeps before to after, the frame dips and swaps to the Hyundai interior, which sweeps the same way, then the gallery slides across (fast), then the page continues normally. Every part of the scroll moves something.
+- Dragging the handle overrides the seam only until the next scroll, so it can never freeze the page. Tabs scroll the scene to that pair. With reduced motion the tabs just switch pairs and the layout is static.

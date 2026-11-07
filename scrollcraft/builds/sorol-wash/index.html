@@ -187,9 +187,10 @@
     </div>
   </section>
 
-  <!-- ACT 4a · THE PROOF: a normal section. The wipe plays itself once, then it is yours to drag. -->
-  <section id="proof" class="proof section--night" data-sc-act="flow" aria-label="לפני ואחרי">
-    <div class="sc-wrap">
+    <!-- ACT 4 · THE PEAK: one pinned scene. Scroll plays: Suzuki before to after, Hyundai interior before to after, then the gallery slides by. -->
+  <section id="peak" class="peak section--night" data-sc-act="pin" data-sc-span="3.4">
+    <div data-sc-stage id="peakStage">
+      <div class="peak__phase peak__phase--wipe" id="phaseWipe">
       <div class="ba">
       <div class="ba__copy">
         <h2 class="sc-display">הוכחה, לא הבטחה.</h2>
@@ -214,12 +215,7 @@
         </button>
       </div>
     </div>
-    </div>
-  </section>
-
-  <!-- ACT 4b · THE WORK: pinned. Scrolling slides the gallery sideways from the first pixel to the last. -->
-  <section id="peak" class="peak section--night" data-sc-act="pin" data-sc-span="3">
-    <div data-sc-stage id="peakStage">
+      </div>
       <div class="peak__phase peak__phase--rail" id="phaseRail">
         <div class="rail-viewport" id="railViewport">
           <div class="rail" id="rail">

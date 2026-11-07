@@ -180,12 +180,20 @@
     docket.classList.toggle('is-on', on);
   }
 
-  /* ---- 3. before/after wipe: plays itself once on entry, then belongs to the visitor -------- */
+  /* ---- 3 + 4. act 4: ONE pinned scene, played by scroll with no dead stretch ------------------------
+        0.00 to 0.20  Suzuki: the seam sweeps from "before" to "after"
+        0.20 to 0.27  the frame dips and swaps to the Hyundai interior
+        0.27 to 0.47  Hyundai interior: before to after
+        0.47 to 0.54  the frame gives way to the gallery
+        0.54 to 0.95  the gallery slides across, fast
+     Dragging the handle takes over only until the next scroll, so the seam never freezes the page. */
   var peak = $('#peak'), stage = $('#peakStage');
   var frame = $('#baFrame'), handle = $('#baHandle');
   var afterImg = $('#baAfter'), beforeImg = $('#baBeforeImg'), ph = $('#baPh');
   var tabs = $$('.tab');
-  var split = 50, userControlled = reduce;
+  var split = 50, userControlled = false, overrideP = 0;
+  var SEQ = { aEnd: 0.20, swapFrom: 0.20, swapTo: 0.27, bStart: 0.27, bEnd: 0.47, fadeFrom: 0.47, fadeTo: 0.54, railFrom: 0.54, railTo: 0.95 };
+  var PAIR_AT = [0.004, 0.274];               /* scroll position (0 to 1 of the scene) where each pair starts */
 
   function setSplit(v) {
     split = clamp(v, 3, 97);
@@ -193,8 +201,7 @@
     handle.setAttribute('aria-valuenow', String(Math.round(split)));
   }
   function takeOver() {
-    if (userControlled) return;
-    userControlled = true;
+    userControlled = true; overrideP = pOf(peak);
     frame.dataset.userControlled = 'true';
   }
   function splitFromEvent(e) {
@@ -207,7 +214,7 @@
     try { frame.setPointerCapture(e.pointerId); } catch (_) {}
     splitFromEvent(e);
   });
-  frame.addEventListener('pointermove', function (e) { if (dragging) splitFromEvent(e); });
+  frame.addEventListener('pointermove', function (e) { if (dragging) { overrideP = pOf(peak); splitFromEvent(e); } });
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (ev) {
     frame.addEventListener(ev, function () { dragging = false; });
   });
@@ -221,8 +228,10 @@
   });
 
   BA_PAIRS.forEach(function (p) { var i = new Image(); i.src = p.after; if (p.before) { var j = new Image(); j.src = p.before; } });
+  var curPair = -1;
   function setPair(i, focusTab) {
     var pair = BA_PAIRS[i];
+    curPair = i;
     tabs.forEach(function (t, k) {
       t.setAttribute('aria-selected', k === i ? 'true' : 'false');
       t.tabIndex = k === i ? 0 : -1;
@@ -232,8 +241,16 @@
     else { beforeImg.hidden = true; beforeImg.removeAttribute('src'); ph.hidden = false; }
     if (focusTab) tabs[i].focus();
   }
+  /* With motion the tabs are shortcuts: they scroll the scene to that pair. Without motion they just switch. */
+  function goToPair(i, focusTab) {
+    if (reduce) { setPair(i, focusTab); return; }
+    var top = peak.getBoundingClientRect().top + window.scrollY;
+    var spanPx = peak.offsetHeight - window.innerHeight;
+    window.scrollTo({ top: top + spanPx * PAIR_AT[i] + 1, behavior: 'smooth' });
+    if (focusTab) tabs[i].focus();
+  }
   tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { setPair(i); });
+    t.addEventListener('click', function () { goToPair(i); });
     t.addEventListener('keydown', function (e) {
       var next = null;
       /* RTL: first tab is on the right, so left/down move forward. */
@@ -241,29 +258,14 @@
       else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = (i - 1 + tabs.length) % tabs.length;
       else if (e.key === 'Home') next = 0;
       else if (e.key === 'End') next = tabs.length - 1;
-      if (next !== null) { e.preventDefault(); setPair(next, true); }
+      if (next !== null) { e.preventDefault(); goToPair(next, true); }
     });
   });
-  setSplit(reduce ? 50 : 18);
-  (function demoWipe() {
-    if (reduce || !('IntersectionObserver' in window)) { if (!reduce) setSplit(50); return; }
-    var io = new IntersectionObserver(function (es) {
-      if (!es[0].isIntersecting) return;
-      io.disconnect();
-      var t0 = performance.now(), D = 2600;
-      var ease = function (t) { return t * t * (3 - 2 * t); };
-      (function step(now) {
-        if (userControlled) return;
-        var t = clamp((now - t0) / D);
-        setSplit(t < 0.6 ? lerp(18, 84, ease(t / 0.6)) : lerp(84, 50, ease((t - 0.6) / 0.4)));
-        if (t < 1) requestAnimationFrame(step);
-      })(t0);
-    }, { threshold: 0.6 });
-    io.observe(frame);
-  })();
+  setPair(0);
+  setSplit(reduce ? 50 : 3);
+  if (reduce) userControlled = true;
 
-  /* ---- 4. act 4b: the pinned gallery. Scroll maps straight onto sideways travel, eased so it glides. --- */
-  var phaseRail = $('#phaseRail');
+  var phaseWipe = $('#phaseWipe'), phaseRail = $('#phaseRail');
   var rail = $('#rail'), railVp = $('#railViewport'), reel = $('#reelVideo');
   var railOver = 0;
   function measureRail() { railOver = Math.max(0, rail.offsetWidth - railVp.clientWidth); }
@@ -281,26 +283,59 @@
     } else loadReel();
   }
 
-  var lastKey = '', railCur = 0, railBar = $('#railBar'), lastMoving = '';
+  var lastKey = '', railCur = 0, splitCur = 3, railBar = $('#railBar'), lastMoving = '';
+  function seamFor(p) {
+    if (p < SEQ.swapFrom) return lerp(3, 97, clamp(p / SEQ.aEnd));
+    if (p < SEQ.bStart) return p < (SEQ.swapFrom + SEQ.swapTo) / 2 ? 97 : 3;
+    return lerp(3, 97, clamp((p - SEQ.bStart) / (SEQ.bEnd - SEQ.bStart)));
+  }
   function tickPeak() {
     if (reduce) { stage.setAttribute('data-sc-verify-state', 'static'); return; }
     var p = pOf(peak);
-    /* no dead zone: travel starts with the pin and ends just before it releases */
-    var target = railOver * clamp(p / 0.92);
+
+    /* which pair, and the dip between them */
+    var want = p < (SEQ.swapFrom + SEQ.swapTo) / 2 ? 0 : 1;
+    var swapped = false;
+    if (want !== curPair) { setPair(want); swapped = true; }
+    var dip = clamp((p - SEQ.swapFrom) / (SEQ.swapTo - SEQ.swapFrom));
+    var frameOpacity = (p >= SEQ.swapFrom && p <= SEQ.swapTo) ? Math.abs(2 * dip - 1) : 1;
+    frame.style.opacity = frameOpacity.toFixed(3);
+
+    /* the seam follows scroll; a drag overrides it only until the next scroll */
+    if (userControlled && Math.abs(p - overrideP) > 0.0015) { userControlled = false; frame.dataset.userControlled = 'false'; }
+    if (!userControlled) {
+      var tgt = seamFor(p);
+      splitCur = swapped ? tgt : (Math.abs(tgt - splitCur) < 0.08 ? tgt : splitCur + (tgt - splitCur) * 0.22);
+      setSplit(splitCur);
+    } else splitCur = split;
+
+    /* wipe phase gives way to the gallery */
+    var f = clamp((p - SEQ.fadeFrom) / (SEQ.fadeTo - SEQ.fadeFrom));
+    phaseWipe.style.opacity = String(1 - f);
+    phaseWipe.style.transform = 'translate3d(0,' + (-f * 24).toFixed(1) + 'px,0)';
+    phaseWipe.style.visibility = f >= 1 ? 'hidden' : 'visible';
+    phaseWipe.style.pointerEvents = f > 0.5 ? 'none' : 'auto';
+    phaseRail.style.opacity = String(f);
+    phaseRail.style.transform = 'translate3d(0,' + ((1 - f) * 24).toFixed(1) + 'px,0)';
+    phaseRail.style.visibility = f <= 0 ? 'hidden' : 'visible';
+    phaseRail.style.pointerEvents = f > 0.5 ? 'auto' : 'none';
+
+    /* the gallery: fast, eased, from the moment it appears */
+    var target = railOver * clamp((p - SEQ.railFrom) / (SEQ.railTo - SEQ.railFrom));
     var d = target - railCur;
-    railCur = Math.abs(d) < 0.4 ? target : railCur + d * 0.16;
+    railCur = Math.abs(d) < 0.4 ? target : railCur + d * 0.18;
     rail.style.transform = 'translate3d(' + railCur.toFixed(1) + 'px,0,0)';
     if (railBar) railBar.style.transform = 'scaleX(' + (railOver ? Math.min(1, railCur / railOver) : 0).toFixed(4) + ')';
     var moving = railCur > railOver * 0.1 ? 'true' : 'false';   /* keep the hint up for the first flick or two */
     if (moving !== lastMoving) { stage.dataset.moving = moving; lastMoving = moving; }
 
     if (reel) {
-      if (p > 0.02 && p < 0.99) { if (reel.paused && reel.getAttribute('src')) { var pr = reel.play(); if (pr && pr.catch) pr.catch(function () {}); } }
+      if (f > 0.5) { if (reel.paused && reel.getAttribute('src')) { var pr = reel.play(); if (pr && pr.catch) pr.catch(function () {}); } }
       else if (!reel.paused) reel.pause();
     }
 
     /* telemetry so the verification harness can see this act is alive */
-    var key = Math.round(railCur) + '|' + Math.round(split);
+    var key = Math.round(railCur) + '|' + Math.round(split) + '|' + curPair;
     if (key !== lastKey) { stage.setAttribute('data-sc-verify-state', key); lastKey = key; }
   }
 

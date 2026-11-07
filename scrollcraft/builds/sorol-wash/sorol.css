@@ -344,7 +344,7 @@ h1, h2, h3, p { margin: 0; }
   padding: calc(var(--sc-bar-h) + 1rem) var(--sc-gutter) calc(var(--docket-h) + 1.25rem + env(safe-area-inset-bottom, 0px));
   will-change: opacity, transform;
 }
-.peak__phase--rail { padding-inline: 0; }
+.peak__phase--rail { padding-inline: 0; opacity: 0; visibility: hidden; pointer-events: none; }
 
 .ba { display: grid; grid-template-columns: minmax(16rem, 26rem) auto; gap: var(--sc-8); justify-content: center; align-items: center; }
 .ba__copy h2 { font-size: var(--sc-t-2xl); }
@@ -578,7 +578,7 @@ h1, h2, h3, p { margin: 0; }
     position: relative; inset: auto; opacity: 1 !important; visibility: visible !important;
     pointer-events: auto !important; transform: none !important; padding-block: var(--sc-8);
   }
-  .peak__phase--rail { padding-inline: 0; }
+  .peak__phase--rail { padding-inline: 0; opacity: 0; visibility: hidden; pointer-events: none; }
   .rail-viewport { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x proximity; }
   .rail { transform: none !important; }
   .rail > * { scroll-snap-align: center; }
@@ -613,19 +613,13 @@ h1, h2, h3, p { margin: 0; }
 .foot__credit a:hover { color: var(--sc-accent); }
 @media (max-width: 520px) { .tabs { display: grid; grid-template-columns: 1fr 1fr; } }
 
-/* act 4a: a plain section now, sized to one screen with room for the docket */
-.proof {
-  min-height: 100svh; display: flex; align-items: center;
-  padding-block: calc(var(--sc-bar-h) + var(--sc-2)) calc(var(--docket-h) + var(--sc-3) + env(safe-area-inset-bottom, 0px));
-}
-.proof .sc-wrap { display: flex; justify-content: center; }
 /* act 4b: tell the visitor what the scroll is doing */
 .rail-meta { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; margin-top: var(--sc-5); padding-inline: var(--sc-gutter); }
 .rail-hint { font-size: var(--sc-t-sm); color: var(--sc-ink-soft); transition: opacity 0.5s var(--sc-ease-out); }
 [data-sc-stage][data-moving="true"] .rail-hint { opacity: 0; }
 .rail-progress { width: min(18rem, 60vw); height: 3px; border-radius: 2px; background: rgba(244, 247, 251, 0.16); overflow: hidden; }
 .rail-progress__bar { display: block; height: 100%; background: var(--sc-accent); transform-origin: right center; transform: scaleX(0); }
-@media (prefers-reduced-motion: reduce) { .rail-meta { display: none; } .proof { min-height: 0; } }
+@media (prefers-reduced-motion: reduce) { .rail-meta { display: none; } }
 
 /* phones: the before/after frame takes the full width, 4:5, so the change reads at a glance */
 @media (orientation: portrait) and (max-width: 860px) {
@@ -635,4 +629,11 @@ h1, h2, h3, p { margin: 0; }
 @media (max-width: 520px) {
   .tabs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
   .tab { font-size: 0.78rem; padding-inline: 0.3rem; min-height: 2.75rem; line-height: 1.25; }
+}
+
+/* the wipe phase sits in the pinned stage: tight above and below so the result is the star */
+.peak__phase--wipe { padding-block: calc(var(--sc-bar-h) + 0.5rem) calc(var(--docket-h) + 0.75rem + env(safe-area-inset-bottom, 0px)); }
+.ba-frame { will-change: opacity; }
+@media (orientation: portrait) and (max-width: 860px) {
+  .ba-frame { width: min(calc(100vw - 2 * var(--sc-gutter)), 34rem, calc(var(--avail) * 0.8)); }
 }
