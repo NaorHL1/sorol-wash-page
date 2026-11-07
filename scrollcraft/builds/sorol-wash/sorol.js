@@ -208,15 +208,35 @@
     var r = frame.getBoundingClientRect();
     setSplit(((e.clientX - r.left) / r.width) * 100);
   }
-  var dragging = false;
+  var dragging = false, pending = null;
   frame.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'touch') {
+      /* On a phone the frame covers most of the screen, so a touch on it is nearly always the start of a scroll.
+         Only the handle can start a drag, and only once the finger moves sideways. */
+      if (!(e.target.closest && e.target.closest('#baHandle'))) return;
+      pending = { x: e.clientX, y: e.clientY, id: e.pointerId };
+      return;
+    }
     takeOver(); dragging = true;
     try { frame.setPointerCapture(e.pointerId); } catch (_) {}
     splitFromEvent(e);
   });
-  frame.addEventListener('pointermove', function (e) { if (dragging) { overrideP = pOf(peak); splitFromEvent(e); } });
+  frame.addEventListener('pointermove', function (e) {
+    if (pending && e.pointerId === pending.id) {
+      var dx = Math.abs(e.clientX - pending.x), dy = Math.abs(e.clientY - pending.y);
+      if (dx > 6 && dx > dy) {
+        pending = null; takeOver(); dragging = true;      /* touch is already captured by the handle: capturing again would end the drag */
+        splitFromEvent(e);
+      } else if (dy > 8) pending = null;           /* it is a scroll: leave it alone */
+      return;
+    }
+    if (dragging) { overrideP = pOf(peak); splitFromEvent(e); }
+  });
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (ev) {
-    frame.addEventListener(ev, function () { dragging = false; });
+    frame.addEventListener(ev, function (e) {
+      if (ev === 'lostpointercapture' && e.target !== frame) return;   /* a child lost its implicit capture: not the end of the drag */
+      dragging = false; pending = null;
+    });
   });
   handle.addEventListener('keydown', function (e) {
     var step = e.shiftKey ? 12 : 4, v = null;
@@ -284,6 +304,8 @@
   }
 
   var lastKey = '', railCur = 0, splitCur = 3, railBar = $('#railBar'), lastMoving = '';
+  var pS = 0, lastT = 0;
+  var coarse = matchMedia('(pointer: coarse)').matches;
   function seamFor(p) {
     if (p < SEQ.swapFrom) return lerp(3, 97, clamp(p / SEQ.aEnd));
     if (p < SEQ.bStart) return p < (SEQ.swapFrom + SEQ.swapTo) / 2 ? 97 : 3;
@@ -291,7 +313,15 @@
   }
   function tickPeak() {
     if (reduce) { stage.setAttribute('data-sc-verify-state', 'static'); return; }
-    var p = pOf(peak);
+    var raw = pOf(peak);
+
+    /* Touch scrolling reports progress in steps. Easing one progress value (exponential, frame-rate independent)
+       turns those steps into a glide, and every transition below follows it together. */
+    var now = performance.now(), dt = lastT ? Math.min(now - lastT, 50) : 16; lastT = now;
+    var tau = coarse ? 190 : 110;
+    pS += (raw - pS) * (1 - Math.exp(-dt / tau));
+    if (Math.abs(raw - pS) < 0.00025) pS = raw;
+    var p = pS;
 
     /* which pair, and the dip between them */
     var want = p < (SEQ.swapFrom + SEQ.swapTo) / 2 ? 0 : 1;
@@ -302,12 +332,8 @@
     frame.style.opacity = frameOpacity.toFixed(3);
 
     /* the seam follows scroll; a drag overrides it only until the next scroll */
-    if (userControlled && Math.abs(p - overrideP) > 0.0015) { userControlled = false; frame.dataset.userControlled = 'false'; }
-    if (!userControlled) {
-      var tgt = seamFor(p);
-      splitCur = swapped ? tgt : (Math.abs(tgt - splitCur) < 0.08 ? tgt : splitCur + (tgt - splitCur) * 0.22);
-      setSplit(splitCur);
-    } else splitCur = split;
+    if (userControlled && !dragging && Math.abs(raw - overrideP) > 0.0015) { userControlled = false; frame.dataset.userControlled = 'false'; }
+    if (!userControlled) { splitCur = seamFor(p); setSplit(splitCur); } else splitCur = split;
 
     /* wipe phase gives way to the gallery */
     var f = clamp((p - SEQ.fadeFrom) / (SEQ.fadeTo - SEQ.fadeFrom));
@@ -320,10 +346,8 @@
     phaseRail.style.visibility = f <= 0 ? 'hidden' : 'visible';
     phaseRail.style.pointerEvents = f > 0.5 ? 'auto' : 'none';
 
-    /* the gallery: fast, eased, from the moment it appears */
-    var target = railOver * clamp((p - SEQ.railFrom) / (SEQ.railTo - SEQ.railFrom));
-    var d = target - railCur;
-    railCur = Math.abs(d) < 0.4 ? target : railCur + d * 0.18;
+    /* the gallery */
+    railCur = railOver * clamp((p - SEQ.railFrom) / (SEQ.railTo - SEQ.railFrom));
     rail.style.transform = 'translate3d(' + railCur.toFixed(1) + 'px,0,0)';
     if (railBar) railBar.style.transform = 'scaleX(' + (railOver ? Math.min(1, railCur / railOver) : 0).toFixed(4) + ')';
     var moving = railCur > railOver * 0.1 ? 'true' : 'false';   /* keep the hint up for the first flick or two */

@@ -109,3 +109,10 @@ Every adjacent act produces a distinct emotion. No two adjacent acts share a fee
 ## Update: interim legal pages (2026-11-07)
 - Business details are not final yet. The three legal pages no longer show bracketed placeholders. They name the business, give WhatsApp and phone as the contact route, say full legal details are sent on request via WhatsApp, and carry a visible "being updated" note. All three stay `noindex`.
 - Still required before a formal launch: an Israeli lawyer's review, the legal name, ID number and address, and the cancellation terms.
+
+## Update: mobile feel, touch fixes, hero cue, logo (2026-11-07)
+- Phones get a longer pinned scroll (4.2 instead of 3.4 viewport heights) so the gallery glides more slowly. One smoothed progress value (exponential, frame-rate independent, slower on touch) drives the seam, the pair swap, the fade and the gallery, so steps from touch scrolling become a glide.
+- Sticking bug: on touch the browser already captures the finger to the handle; capturing again fired "lost capture", which ended the drag after a few pixels. Fixed. Touches on the frame no longer grab the seam (they are scrolls); only a sideways drag that starts on the handle moves it, and the next scroll hands control back.
+- Fast double taps no longer zoom the page: `touch-action: manipulation` on the page and every control (pinch-zoom still works).
+- Hero end state shows a quiet cue under the WhatsApp button: "גללו וראו איך זה עובד" with a bobbing arrow, linking to the next section.
+- Logo: the extra outer ring is gone and the logo is bigger (the logo's own silver rim remains).
