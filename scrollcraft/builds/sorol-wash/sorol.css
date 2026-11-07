@@ -609,3 +609,4 @@ h1, h2, h3, p { margin: 0; }
 .foot__credit { display: block; margin-top: 0.5rem; }
 .foot__credit a { color: inherit; font-weight: 600; }
 .foot__credit a:hover { color: var(--sc-accent); }
+@media (max-width: 520px) { .tabs { display: grid; grid-template-columns: 1fr 1fr; } }

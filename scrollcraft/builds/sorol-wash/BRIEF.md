@@ -77,3 +77,10 @@ Every adjacent act produces a distinct emotion. No two adjacent acts share a fee
 15. **Footer** is a real footer: brand and CTA, site links, contact (WhatsApp, phone, Instagram), service area, copyright, back to top.
 16. **Performance.** Self-hosted Heebo and Rubik (Hebrew and Latin subsets, about 87 KB, no third-party requests); hero first load 2.5 MB on phones and 3.3 MB on desktop (about 8 MB before); the reel clip loads only when the visitor is within about 1.5 screens of it; the haze layer and the grain overlay are gone on phones; every tap target is at least 44px.
 
+
+## Update: real before/after photos (2026-11-07)
+- Four real pairs now drive the act 4 wipe: Hyundai interior (before frame taken from the walkthrough clip, so it is lower resolution), Suzuki exterior, Cupra exterior, Hyundai exterior. Tabs are labelled by car (factual), not by treatment, because the work performed on each car is not recorded.
+- Before and after shots are not framed identically (different angle or distance); the wipe is honest about that rather than faked.
+- Rail gallery: Suzuki rear, Cupra rear, two Mercedes, light leather interior, then the Instagram card.
+- Every readable licence plate (the client's and other cars') is blurred before publishing. A Cupra interior photo showing driver hand controls was deliberately not used.
+- Asset names say what the file is: `ba-<car>-before|after`, `gallery-*`, `card-*`, `reel-showcase*`, `hero-*`.

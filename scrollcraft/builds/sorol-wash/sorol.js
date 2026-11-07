@@ -21,9 +21,14 @@
   /* Before/after pairs. `before: null` renders the labelled placeholder. Drop a
      real photo path into `before` (same framing as `after`) and it goes live. */
   var BA_PAIRS = [
-    { after: 'assets/after-interior.webp',  before: null, alt: 'פנים הרכב אחרי הטיפול' },
-    { after: 'assets/after-mercedes2.webp', before: null, alt: 'מרצדס אפורה מט עם גלגלים שחורים אחרי הטיפול' },
-    { after: 'assets/after-mercedes.webp',  before: null, alt: 'מרצדס צהובה אחרי הטיפול' }
+    { before: 'assets/ba-tucson-interior-before.webp', after: 'assets/ba-tucson-interior-after.webp',
+      alt: 'מושבים אחוריים נקיים ביונדאי אחרי הטיפול', beforeAlt: 'מושב אחורי ביונדאי לפני הטיפול, עם כתמים' },
+    { before: 'assets/ba-swift-before.webp', after: 'assets/ba-swift-after.webp',
+      alt: 'סוזוקי סוויפט שחורה ונקייה אחרי הטיפול', beforeAlt: 'סוזוקי סוויפט שחורה לפני הטיפול, עם שפשופים בצבע' },
+    { before: 'assets/ba-cupra-before.webp', after: 'assets/ba-cupra-after.webp',
+      alt: 'קופרה לבנה נקייה אחרי הטיפול', beforeAlt: 'קופרה לבנה לפני הטיפול, מכוסה אבק' },
+    { before: 'assets/ba-tucson-before.webp', after: 'assets/ba-tucson-after.webp',
+      alt: 'יונדאי טוסון נקייה ומבריקה אחרי הטיפול', beforeAlt: 'יונדאי טוסון לפני הטיפול, מכוסה אבק' }
   ];
 
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -227,7 +232,7 @@
       t.tabIndex = k === i ? 0 : -1;
     });
     afterImg.src = pair.after; afterImg.alt = pair.alt;
-    if (pair.before) { beforeImg.src = pair.before; beforeImg.hidden = false; ph.hidden = true; }
+    if (pair.before) { beforeImg.src = pair.before; beforeImg.alt = pair.beforeAlt || ''; beforeImg.hidden = false; ph.hidden = true; }
     else { beforeImg.hidden = true; beforeImg.removeAttribute('src'); ph.hidden = false; }
     if (focusTab) tabs[i].focus();
   }
