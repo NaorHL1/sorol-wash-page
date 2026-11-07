@@ -125,19 +125,20 @@ h1, h2, h3, p { margin: 0; }
 /* SOROL WASH on one line, crisp chrome gradient (no skew or filter, which blurred the clipped text). */
 .brand__name {
   display: flex; align-items: baseline; justify-content: center; gap: 0.5em; text-transform: uppercase;
-  font-family: 'Syncopate', var(--sc-font-display), sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.03em;
+  font-family: 'Syncopate', var(--sc-font-display), sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.03em;
 }
 .brand__name i, .brand__name b {
   font-style: normal; font-weight: 700; display: inline-block;
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .brand__name i { background-image: linear-gradient(180deg, #FFFFFF 0%, #E8EDF3 40%, #A7B2BF 56%, #F3F6FA 80%, #C5CDD7 100%); color: #E2E7EE; }
-.brand__name b { background-image: linear-gradient(180deg, #E4E9EF 0%, #B3BDC9 42%, #7C8897 58%, #C9D1DA 84%, #A2ADBB 100%); color: #B8C2CE; }
-.brand__tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0; direction: rtl; text-align: center; color: #A9B4C1; }
+.brand__name b { background-image: linear-gradient(180deg, #D6FBFF 0%, #6FEFFF 38%, #00C4DE 60%, #7AF2FF 84%, #19D6EE 100%); color: #3DE8FF; }
+.brand__tag { font-size: 0.84rem; font-weight: 500; letter-spacing: 0; direction: rtl; text-align: center; color: #A9B4C1; }
 .brand--lg img { width: 3.75rem; height: 3.75rem; }
-.brand--lg .brand__name { font-size: 1.55rem; }
-.brand--lg .brand__tag { font-size: 0.86rem; }
-@media (max-width: 380px) { .brand__tag { display: none; } .brand__name { font-size: 0.98rem; } }
+.brand--lg .brand__name { font-size: 1.75rem; }
+.brand--lg .brand__tag { font-size: 0.98rem; }
+@media (max-width: 380px) { .brand__name { font-size: 1rem; } .brand__tag { font-size: 0.74rem; } .brand { gap: 0.55rem; } .brand img { width: 2.3rem; height: 2.3rem; } .site-bar { gap: 0.5rem; } }
+@media (max-width: 340px) { .brand__name { font-size: 0.9rem; letter-spacing: 0.01em; } }
 .site-bar__end { display: flex; align-items: center; gap: 0.75rem; }
 .site-bar__area { font-size: var(--sc-t-xs); color: #9BA8B8; }
 .icon-btn {
@@ -333,8 +334,8 @@ h1, h2, h3, p { margin: 0; }
 @media (max-width: 699px) { .menu { grid-template-columns: 1fr; margin-top: var(--sc-6); } }
 
 /* ------------------------------------------------------------ interlude -- */
-.interlude { min-height: 55svh; display: grid; place-items: center; text-align: center; padding: var(--sc-8) var(--sc-gutter); }
-.interlude hr { width: min(18rem, 50vw); margin: 0 auto var(--sc-6); }
+.interlude { min-height: 0; display: grid; place-items: center; text-align: center; padding: var(--sc-5) var(--sc-gutter); }
+.interlude hr { width: min(18rem, 50vw); margin: 0 auto var(--sc-4); }
 .interlude p { font-family: var(--sc-font-display); font-weight: 500; font-size: var(--sc-t-xl); color: var(--sc-ink-soft); }
 
 /* ----------------------------------------------------- act 4: the peak -- */
@@ -637,3 +638,20 @@ h1, h2, h3, p { margin: 0; }
 @media (orientation: portrait) and (max-width: 860px) {
   .ba-frame { width: min(calc(100vw - 2 * var(--sc-gutter)), 34rem, calc(var(--avail) * 0.8)); }
 }
+
+/* phones: slightly larger small text, and a bigger before/after frame (3:4, nearly edge to edge) */
+@media (max-width: 700px) { :root { --sc-t-xs: 0.88rem; --sc-t-sm: 1rem; } }
+@media (orientation: portrait) and (max-width: 860px) {
+  .ba-frame {
+    --avail: calc(100svh - 12.75rem - var(--docket-h) - env(safe-area-inset-bottom, 0px));
+    aspect-ratio: 3 / 4; width: min(calc(100vw - 1rem), 34rem, calc(var(--avail) * 0.75)); border-radius: var(--sc-r-md, 1rem);
+  }
+}
+@media (orientation: portrait) and (max-width: 860px) and (max-height: 700px) {
+  .ba-frame { --avail: calc(100svh - 10.15rem - var(--docket-h) - env(safe-area-inset-bottom, 0px)); }
+}
+
+/* fonts: hold the page back for a beat so text appears once, already in its final font */
+body { transition: opacity 0.28s ease; }
+html.fonts-pending body { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { body { transition: none; } }

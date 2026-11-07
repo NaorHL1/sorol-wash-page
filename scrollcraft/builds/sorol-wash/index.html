@@ -7,13 +7,31 @@
 <title>Sorol Wash | שטיפת פרימיום ודיטיילינג עד הבית והמשרד</title>
 <meta name="description" content="Sorol Wash מגיעים עד החניה שלך עם כל הציוד המקצועי: שטיפה, ניקוי פנים, קיטור, פוליש ודיטיילינג מלא. בוחרים טיפולים ושולחים הודעה בוואטסאפ.">
 <link rel="icon" href="assets/logo.webp" type="image/webp">
+<link rel="preload" href="fonts/syncopate-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/rubik-hebrew.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/rubik-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/heebo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/hero-poster-portrait.webp?v=3" media="(orientation: portrait)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/hero-poster-landscape.webp?v=3" media="(orientation: landscape)" fetchpriority="high">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="scrollcraft.css">
 <link rel="stylesheet" href="sorol.css">
+<script>
+/* Show the page once, in its final fonts: no flash of fallback text, no jump when the fonts arrive. Failsafe after 2.5s. */
+(function () {
+  var d = document.documentElement; d.classList.add('fonts-pending');
+  function done() { d.classList.remove('fonts-pending'); }
+  if (!document.fonts || !document.fonts.load) { done(); return; }
+  var t = setTimeout(done, 2500);
+  Promise.all([
+    document.fonts.load('700 1em Syncopate', 'SOROL'),
+    document.fonts.load('400 1em Heebo', 'א'), document.fonts.load('700 1em Heebo', 'א'),
+    document.fonts.load('500 1em Rubik', 'א'), document.fonts.load('800 1em Rubik', 'א'),
+    document.fonts.load('400 1em Heebo', 'a'), document.fonts.load('800 1em Rubik', 'a')
+  ]).then(function () { clearTimeout(t); done(); }, done);
+})();
+</script>
 </head>
 <body>
 
