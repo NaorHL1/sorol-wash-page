@@ -21,12 +21,10 @@
   /* Before/after pairs. `before: null` renders the labelled placeholder. Drop a
      real photo path into `before` (same framing as `after`) and it goes live. */
   var BA_PAIRS = [
+    { before: 'assets/ba-swift-before.webp', after: 'assets/ba-swift-after.webp',
+      alt: 'סוזוקי סוויפט שחורה ונקייה אחרי השבחת הצבע והדיטיילינג', beforeAlt: 'סוזוקי סוויפט שחורה לפני הטיפול, עם שפשופים בצבע' },
     { before: 'assets/ba-tucson-interior-before.webp', after: 'assets/ba-tucson-interior-after.webp',
       alt: 'מושבים אחוריים נקיים ביונדאי אחרי הטיפול', beforeAlt: 'מושב אחורי ביונדאי לפני הטיפול, עם כתמים' },
-    { before: 'assets/ba-swift-before.webp', after: 'assets/ba-swift-after.webp',
-      alt: 'סוזוקי סוויפט שחורה ונקייה אחרי הטיפול', beforeAlt: 'סוזוקי סוויפט שחורה לפני הטיפול, עם שפשופים בצבע' },
-    { before: 'assets/ba-cupra-before.webp', after: 'assets/ba-cupra-after.webp',
-      alt: 'קופרה לבנה נקייה אחרי הטיפול', beforeAlt: 'קופרה לבנה לפני הטיפול, מכוסה אבק' },
     { before: 'assets/ba-tucson-before.webp', after: 'assets/ba-tucson-after.webp',
       alt: 'יונדאי טוסון נקייה ומבריקה אחרי הטיפול', beforeAlt: 'יונדאי טוסון לפני הטיפול, מכוסה אבק' }
   ];

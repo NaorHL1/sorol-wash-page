@@ -88,3 +88,8 @@ Every adjacent act produces a distinct emotion. No two adjacent acts share a fee
 ## Update: act 4 split, silver wordmark (2026-11-07)
 - Act 4 was one pinned scene (wipe, then gallery). Dead scroll: once a visitor touched the wipe, scrolling moved nothing until the gallery phase. It is now two parts: 4a "proof" is a normal section (the wipe plays itself once on entry, then it is the visitor's), and 4b is a pinned gallery that moves sideways from the first scroll to the last, eased (never jumps), with a hint that fades after the first flick and a progress bar.
 - Wordmark: Syncopate (self-hosted, OFL) in brushed-silver gradient, slanted SOROL over a thin, spaced WASH, echoing the logo lettering. The logo ring is silver instead of cyan.
+
+## Update: before/after set trimmed (2026-11-07)
+- Pairs are now three, in this order: Suzuki (labelled as colour enhancement and full detailing), Hyundai interior, Hyundai exterior. The Cupra exterior pair was removed.
+- On phones the before/after frame is 4:5 and full width, so the change is easier to see. Spacing above and below the result is tighter.
+- Wordmark: SOROL WASH on one line in a chrome gradient, without the skew or drop shadow that blurred the text.
