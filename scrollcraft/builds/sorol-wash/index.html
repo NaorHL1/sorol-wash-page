@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080B10">
+<title>Sorol Wash | שטיפת פרימיום ודיטיילינג עד הבית והמשרד</title>
+<meta name="description" content="Sorol Wash מגיעים עד החניה שלך עם כל הציוד המקצועי: שטיפה, ניקוי פנים, קיטור, פוליש ודיטיילינג מלא. בוחרים טיפולים ושולחים הודעה בוואטסאפ.">
+<link rel="icon" href="assets/logo.webp" type="image/webp">
+<link rel="preload" href="fonts/rubik-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/hero-poster-portrait.webp?v=3" media="(orientation: portrait)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-poster-landscape.webp?v=3" media="(orientation: landscape)" fetchpriority="high">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="sorol.css">
+</head>
+<body>
+
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></symbol>
+  <symbol id="i-drag" viewBox="0 0 24 24"><path d="M8.5 7L4 12l4.5 5M15.5 7L20 12l-4.5 5"/></symbol>
+</svg>
+
+<a class="skip" href="#services">דילוג לבחירת טיפולים</a>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<header class="site-bar">
+  <a class="brand" href="#top" aria-label="Sorol Wash, לראש העמוד">
+    <img src="assets/logo.webp" width="38" height="38" alt="">
+    <span class="brand__name">SOROL WASH</span>
+  </a>
+  <div class="site-bar__end">
+    <span class="site-bar__area" id="areaLabel">הגעה עד הבית והמשרד</span>
+    <a class="icon-btn" data-ig href="https://instagram.com/sorol_wash" target="_blank" rel="noopener" aria-label="האינסטגרם של Sorol Wash">
+      <svg class="ico ico--stroke" aria-hidden="true"><use href="#i-ig"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ACT 1 · The Hydro-Wave hero: plays on entry, then holds on the lit headlights.
+       Portrait screens get the native 9:16 clip, landscape screens the 16:9 clip. -->
+  <section id="hero" class="hero" data-sc-act="flow" aria-label="Sorol Wash">
+    <div class="hero-stage" id="heroStage" data-phase="intro">
+      <picture>
+        <source media="(orientation: portrait)" srcset="assets/hero-poster-portrait.webp?v=3">
+        <img class="hero-poster" src="assets/hero-poster-landscape.webp?v=3" width="1920" height="1080" alt="" fetchpriority="high" decoding="async">
+      </picture>
+      <video class="hero-video" id="heroVideo" muted playsinline preload="auto" aria-hidden="true"
+             data-src="assets/hero-landscape.mp4?v=3"
+             data-src-portrait="assets/hero-portrait.mp4?v=3"></video>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="kicker">SOROL WASH · דיטיילינג ושטיפת פרימיום עד הבית והמשרד</p>
+        <h1 class="sc-display"><span class="hl">שטיפה</span> <span class="hl">ברמת סטודיו.</span> <span class="hl">עד לחניה.</span></h1>
+        <p class="sc-body">אנחנו מגיעים עד אליך עם כל הציוד והחומרים המתקדמים בעולם. בלי תורים, בלי להתפשר על הפרטים הקטנים.</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" data-wa href="#" target="_blank" rel="noopener">
+            <span class="wa" aria-hidden="true"><svg class="ico"><use href="#i-wa"/></svg></span>תיאום בוואטסאפ
+          </a>
+          <a class="link" href="#services">בחירת טיפולים לרכב</a>
+        </div>
+      </div>
+      <button type="button" class="hero-play" id="heroPlay" hidden aria-label="הפעלת הסרטון">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+      </button>
+      <button type="button" class="hero-pause" id="heroPause" hidden aria-label="עצירת הסרטון">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.6" height="14" rx="1"/><rect x="13.9" y="5" width="3.6" height="14" rx="1"/></svg>
+      </button>
+      <div class="hero-end" id="heroEnd">
+        <a class="btn btn--primary" data-wa href="#" target="_blank" rel="noopener">
+          <span class="wa" aria-hidden="true"><svg class="ico"><use href="#i-wa"/></svg></span>תיאום בוואטסאפ
+        </a>
+        <a class="link" href="#services">בחירת טיפולים לרכב</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACT 2 · How it works: daylight, a real photo and a three-step timeline -->
+  <section id="how" class="section--daylight" data-sc-act="flow">
+    <div class="sc-wrap how__grid">
+      <div class="how__text">
+        <div class="act-head" data-sc-in>
+          <h2 class="sc-display">אתם בבית. אנחנו מגיעים.</h2>
+          <p class="sc-body">שלושה צעדים, בלי תורים ובלי לנסוע לשום מקום.</p>
+        </div>
+        <ol class="timeline" data-sc-in data-sc-stagger="80">
+          <li class="tl">
+            <span class="tl__n" aria-hidden="true">01</span>
+            <div><h3>בוחרים טיפולים ושולחים הודעה</h3>
+            <p>מסמנים באתר בדיוק מה הרכב צריך ושולחים לנו הודעה מהירה בוואטסאפ עם אזור החניה שלכם.</p></div>
+          </li>
+          <li class="tl">
+            <span class="tl__n" aria-hidden="true">02</span>
+            <div><h3>מגיעים עד לחניה שלכם</h3>
+            <p>אנחנו מגיעים עד לבית או למשרד עם רכב מאובזר בכל הציוד המקצועי, חומרי הפרימיום ומערכות הקיטור. אתם ממשיכים בשגרה שלכם.</p></div>
+          </li>
+          <li class="tl">
+            <span class="tl__n" aria-hidden="true">03</span>
+            <div><h3>יורדים לרכב חדש מהניילון</h3>
+            <p>בסיום הטיפול תקבלו עדכון, ותרדו לרכב נקי, מחוטא, מבריק ומריח כמו חדש.</p></div>
+          </li>
+        </ol>
+      </div>
+      <figure class="how__photo" data-sc-reveal="up" data-sc-reveal-at="0.08 0.42">
+        <img src="assets/after-mercedes.webp" width="1000" height="1333" alt="רכב בחניה פרטית אחרי טיפול" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ACT 3 · The service menu: one photo-led card per category, uniform tappable rows -->
+  <section id="services" class="section--daylight" data-sc-act="flow">
+    <div class="sc-wrap">
+      <div class="act-head" data-sc-in>
+        <h2 class="sc-display">בחרו מה הרכב שלכם צריך</h2>
+        <p class="sc-body">סמנו את הטיפולים. ההודעה לוואטסאפ נבנית לבד, ואתם רק לוחצים על שליחה.</p>
+      </div>
+      <div class="menu">
+        <div class="cell" data-sc-in>
+          <article class="mcard" data-cat="1">
+            <header class="mcard__hero">
+              <img src="assets/cat-01-exterior.webp?v=4" width="900" height="562" alt="" loading="lazy" decoding="async">
+              <span class="card__count" data-count-cat="1" hidden></span>
+              <h3>מעטפת חוץ וגלגלים</h3>
+            </header>
+            <div class="mcard__body">
+              <button type="button" class="cat-toggle" data-cat-toggle="1" aria-pressed="false">בחר את כל הקטגוריה</button>
+              <ul class="rows">
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="1" data-cat="1"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>שטיפה חיצונית יסודית לרכב</span></button></li>
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="2" data-cat="1"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>ניקוי ג’נטים וצמיגים</span></button></li>
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="3" data-cat="1"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>ניקוי חלונות ומראות</span></button></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="cell" data-sc-in>
+          <article class="mcard" data-cat="2">
+            <header class="mcard__hero">
+              <img src="assets/cat-02-interior.webp?v=4" width="900" height="562" alt="" loading="lazy" decoding="async">
+              <span class="card__count" data-count-cat="2" hidden></span>
+              <h3>ניקוי פנים עמוק וחיטוי בקיטור</h3>
+            </header>
+            <div class="mcard__body">
+              <button type="button" class="cat-toggle" data-cat-toggle="2" aria-pressed="false">בחר את כל הקטגוריה</button>
+              <ul class="rows">
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="4" data-cat="2"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>ניקוי פנימי עמוק</span></button></li>
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="5" data-cat="2"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>ניקוי מושבים וריפודים</span></button></li>
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="6" data-cat="2"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>ניקוי שטיחים ותא מטען</span></button></li>
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="7" data-cat="2"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>ניקוי וחידוש דשבורד ופלסטיקה</span></button></li>
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="8" data-cat="2"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>ניקוי בקיטור</span></button></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="cell" data-sc-in>
+          <article class="mcard" data-cat="3">
+            <header class="mcard__hero">
+              <img src="assets/cat-03-polish.webp?v=4" width="900" height="562" alt="" loading="lazy" decoding="async">
+              <span class="card__count" data-count-cat="3" hidden></span>
+              <h3>השבחת צבע ודיטיילינג מלא</h3>
+            </header>
+            <div class="mcard__body">
+              <button type="button" class="cat-toggle" data-cat-toggle="3" aria-pressed="false">בחר את כל הקטגוריה</button>
+              <ul class="rows">
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="9" data-cat="3"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>פוליש וחידוש צבע</span></button></li>
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="10" data-cat="3"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>ווקס והגנה על צבע הרכב</span></button></li>
+            <li><button type="button" class="pill pill--row" aria-pressed="false" data-id="11" data-cat="3"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M6.2 10.4l2.6 2.6 5-5.4"/></svg><span>דיטיילינג מלא לרכב</span></button></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERLUDE · authored silence before the peak -->
+  <section class="interlude section--night" aria-label="מעבר">
+    <div data-sc-in>
+      <hr class="sc-rule">
+      <p>התוצאה מדברת בעד עצמה.</p>
+    </div>
+  </section>
+
+  <!-- ACT 4 · THE PEAK: wipe, then rail (page-driven phases) -->
+  <section id="peak" class="peak section--night" data-sc-act="pin" data-sc-span="3.2">
+    <div data-sc-stage id="peakStage">
+
+      <div class="peak__phase peak__phase--wipe" id="phaseWipe">
+        <div class="ba">
+          <div class="ba__copy">
+            <h2 class="sc-display">הוכחה, לא הבטחה.</h2>
+            <p class="sc-body">גררו את הידית ובדקו בעצמכם.</p>
+            <div class="tabs" role="tablist" aria-label="סוג טיפול">
+              <button type="button" role="tab" class="tab" id="tab-0" aria-selected="true" aria-controls="baFrame" data-ba="0">פנים ומושבים</button>
+              <button type="button" role="tab" class="tab" id="tab-1" aria-selected="false" aria-controls="baFrame" tabindex="-1" data-ba="1">חוץ וגלגלים</button>
+              <button type="button" role="tab" class="tab" id="tab-2" aria-selected="false" aria-controls="baFrame" tabindex="-1" data-ba="2">ברק צבע</button>
+            </div>
+          </div>
+
+          <div class="ba-frame" id="baFrame" role="tabpanel" aria-label="השוואת לפני ואחרי">
+            <img id="baAfter" src="assets/after-interior.webp" width="1000" height="1333" alt="פנים הרכב אחרי הטיפול">
+            <div class="ba-before" id="baBefore">
+              <img id="baBeforeImg" src="" width="1000" height="1333" alt="" hidden>
+              <div class="ba-ph" id="baPh">תמונת "לפני" בקרוב</div>
+            </div>
+            <span class="badge badge--before">לפני</span>
+            <span class="badge badge--after">אחרי</span>
+            <button type="button" class="ba-handle" id="baHandle" role="slider" aria-label="הזזת קו ההשוואה"
+                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <span class="ba-knob"><svg class="ico ico--stroke" aria-hidden="true"><use href="#i-drag"/></svg></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="peak__phase peak__phase--rail" id="phaseRail">
+        <div class="rail-viewport" id="railViewport">
+          <div class="rail" id="rail">
+            <div class="rail__lead">
+              <h2 class="sc-display">מהעבודה שלנו</h2>
+              <p class="sc-body">קטעים ותמונות מהחניה של הלקוחות.</p>
+            </div>
+            <figure class="reel">
+              <video id="reelVideo" muted loop playsinline preload="none" poster="assets/reel-01-poster.webp" data-src="assets/reel-01.mp4?v=3" aria-label="סרטון קצר: סיבוב סביב רכב אחרי טיפול"></video>
+              <figcaption>סיבוב סביב הרכב</figcaption>
+            </figure>
+            <figure class="reel reel--photo">
+              <img src="assets/after-interior.webp" width="1000" height="1333" alt="פנים רכב נקי עם מושבי עור בהירים" loading="lazy">
+              <figcaption>פנים ומושבים</figcaption>
+            </figure>
+            <figure class="reel reel--photo">
+              <img src="assets/after-mercedes2.webp" width="1000" height="1333" alt="מרצדס אפורה מט עם גלגלים שחורים אחרי טיפול" loading="lazy">
+              <figcaption>חוץ וגלגלים</figcaption>
+            </figure>
+            <figure class="reel reel--photo">
+              <img src="assets/after-mercedes.webp" width="1000" height="1333" alt="מרצדס צהובה מבריקה בחניה" loading="lazy">
+              <figcaption>ברק צבע</figcaption>
+            </figure>
+            <a class="reel reel--ig" data-ig href="https://instagram.com/sorol_wash" target="_blank" rel="noopener">
+              <svg class="ico ico--stroke" aria-hidden="true"><use href="#i-ig"/></svg>
+              <strong dir="ltr" data-ig-handle>@sorol_wash</strong>
+              <span>לעוד תמונות וסרטונים באינסטגרם</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACT 5 · The resolved close: a booking form that writes the WhatsApp message -->
+  <section id="close" class="close section--night" data-sc-act="flow">
+    <div class="sc-wrap close__grid">
+      <div class="close__intro" data-sc-in>
+        <h2 class="sc-display">מוכנים לרכב חדש מהניילון?</h2>
+        <p class="sc-body">בוחרים טיפולים, שולחים הודעה אחת, ואנחנו חוזרים אליכם לתאם יום ושעה.</p>
+        <ul class="perks">
+          <li><svg class="ico ico--stroke" aria-hidden="true"><use href="#i-check"/></svg>מגיעים עד החניה, בבית או במשרד</li>
+          <li><svg class="ico ico--stroke" aria-hidden="true"><use href="#i-check"/></svg>בלי תורים ובלי לנסוע לשום מקום</li>
+          <li><svg class="ico ico--stroke" aria-hidden="true"><use href="#i-check"/></svg>ההודעה מוכנה, אתם רק לוחצים על שליחה</li>
+        </ul>
+      </div>
+
+      <div data-sc-in>
+        <form class="book" id="plate" novalidate aria-labelledby="bookTitle">
+          <div class="book__head">
+            <h3 class="book__title" id="bookTitle">הזמנה מהירה</h3>
+            <span class="book__count" id="plateCount" aria-live="polite">לא נבחרו שירותים: תיאום כללי</span>
+          </div>
+
+          <fieldset class="book__block">
+            <legend>הטיפולים לרכב שלך <span class="book__opt">(אפשר לשנות בכל רגע)</span></legend>
+            <div class="chips" id="chips" role="group" aria-label="בחירת טיפולים"></div>
+          </fieldset>
+
+          <div class="fields">
+            <div class="field">
+              <label for="f-name">שם <span class="book__opt">(לא חובה)</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" enterkeyhint="next" placeholder="השם שלך" maxlength="60">
+            </div>
+            <div class="field">
+              <label for="f-area">איפה החניה? <span class="book__opt">(לא חובה)</span></label>
+              <input id="f-area" name="area" type="text" autocomplete="address-level2" enterkeyhint="done" placeholder="עיר או שכונה" maxlength="80">
+            </div>
+          </div>
+
+          <div class="book__actions">
+            <a class="btn btn--primary btn--block btn--lg" data-wa href="#" target="_blank" rel="noopener">
+              <span class="wa" aria-hidden="true"><svg class="ico"><use href="#i-wa"/></svg></span>שליחה בוואטסאפ
+            </a>
+            <p class="book__note">ההודעה נפתחת בוואטסאפ עם הטיפולים שבחרתם. שום מידע לא נשמר באתר.</p>
+            <p class="book__call">מעדיפים לדבר? <a data-phone href="tel:0535254992">053-525-4992</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="sc-wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a class="brand brand--lg" href="#top" aria-label="Sorol Wash, לראש העמוד">
+          <img src="assets/logo.webp" width="56" height="56" alt="" loading="lazy" decoding="async">
+          <span class="brand__name">SOROL WASH</span>
+        </a>
+        <p>שטיפת פרימיום ודיטיילינג עד הבית והמשרד. מגיעים אליך עם כל הציוד.</p>
+        <a class="btn btn--primary" data-wa href="#" target="_blank" rel="noopener">
+          <span class="wa" aria-hidden="true"><svg class="ico"><use href="#i-wa"/></svg></span>תיאום בוואטסאפ
+        </a>
+      </div>
+
+      <nav class="foot__col" aria-label="ניווט באתר">
+        <h3>באתר</h3>
+        <ul>
+          <li><a href="#how">איך זה עובד</a></li>
+          <li><a href="#services">הטיפולים</a></li>
+          <li><a href="#peak">מהעבודה שלנו</a></li>
+          <li><a href="#close">הזמנת טיפול</a></li>
+        </ul>
+      </nav>
+
+      <div class="foot__col">
+        <h3>יצירת קשר</h3>
+        <ul>
+          <li><a data-wa href="#" target="_blank" rel="noopener">וואטסאפ</a></li>
+          <li><a data-phone href="tel:0535254992">053-525-4992</a></li>
+          <li><a data-ig href="https://instagram.com/sorol_wash" target="_blank" rel="noopener"><span dir="ltr" data-ig-handle>@sorol_wash</span></a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h3>אזור שירות</h3>
+        <p id="footArea">הגעה עד הבית והמשרד</p>
+        <p class="foot__soft">מגיעים עד החניה שלכם, בבית או במשרד.</p>
+      </div>
+    </div>
+
+    <div class="foot__bottom">
+      <span>© 2026 Sorol Wash. כל הזכויות שמורות.</span>
+      <nav class="foot__legal" aria-label="מסמכים משפטיים">
+        <a href="accessibility.html">הצהרת נגישות</a>
+        <a href="privacy.html">מדיניות פרטיות</a>
+        <a href="terms.html">תנאי שימוש ופרטי עסקה</a>
+      </nav>
+      <a class="foot__up" href="#top">חזרה למעלה</a>
+    </div>
+  </div>
+</footer>
+
+<!-- The Detailing Docket: hidden in act 1 and act 5 -->
+<aside class="docket" id="docket" aria-label="סיכום הטיפולים ושליחה בוואטסאפ">
+  <div>
+    <p class="docket__count" id="docketCount" aria-live="polite">לא נבחרו שירותים ספציפיים: תיאום כללי</p>
+    <p class="docket__hint">ההודעה נשלחת עם הטיפולים שסימנתם</p>
+  </div>
+  <a class="btn btn--primary" id="docketCta" data-wa href="#" target="_blank" rel="noopener">
+    <span class="wa" aria-hidden="true"><svg class="ico"><use href="#i-wa"/></svg></span>תיאום בוואטסאפ
+  </a>
+</aside>
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script src="sorol.js"></script>
+</body>
+</html>

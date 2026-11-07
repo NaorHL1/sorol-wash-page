@@ -1,0 +1,14 @@
+/* Legal pages: a readable column, real headings, the same tokens as the landing page. */
+body.legal-page { background: var(--sc-canvas); color: var(--sc-ink); }
+body.legal-page .site-bar { position: sticky; }
+.legal { max-width: 46rem; padding-block: calc(var(--sc-bar-h) + 2.5rem) 3rem; }
+.legal h1 { font-family: var(--sc-font-display); font-weight: 800; font-size: var(--sc-t-3xl); line-height: 1.1; margin-bottom: 0.5rem; }
+.legal h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); margin: 2.25rem 0 0.75rem; }
+.legal p, .legal li { color: var(--sc-ink); line-height: 1.8; }
+.legal p { margin: 0 0 0.9rem; }
+.legal ul { padding-inline-start: 1.25rem; margin: 0 0 0.9rem; }
+.legal li { margin-bottom: 0.45rem; }
+.legal a { color: var(--sc-accent); text-decoration: underline; text-underline-offset: 0.25em; }
+.legal__meta { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin-bottom: 2rem; }
+.foot__legal { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.foot__legal a { color: var(--sc-ink); text-decoration: underline; text-underline-offset: 0.25em; min-height: var(--tap); display: inline-flex; align-items: center; }
