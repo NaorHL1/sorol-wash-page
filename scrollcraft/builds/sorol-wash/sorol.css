@@ -633,6 +633,6 @@ h1, h2, h3, p { margin: 0; }
   .ba { gap: var(--sc-3); }
 }
 @media (max-width: 520px) {
-  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+  .tabs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
   .tab { font-size: 0.78rem; padding-inline: 0.3rem; min-height: 2.75rem; line-height: 1.25; }
 }

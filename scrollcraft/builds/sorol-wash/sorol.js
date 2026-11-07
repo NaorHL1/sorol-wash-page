@@ -24,9 +24,7 @@
     { before: 'assets/ba-swift-before.webp', after: 'assets/ba-swift-after.webp',
       alt: 'סוזוקי סוויפט שחורה ונקייה אחרי השבחת הצבע והדיטיילינג', beforeAlt: 'סוזוקי סוויפט שחורה לפני הטיפול, עם שפשופים בצבע' },
     { before: 'assets/ba-tucson-interior-before.webp', after: 'assets/ba-tucson-interior-after.webp',
-      alt: 'מושבים אחוריים נקיים ביונדאי אחרי הטיפול', beforeAlt: 'מושב אחורי ביונדאי לפני הטיפול, עם כתמים' },
-    { before: 'assets/ba-tucson-before.webp', after: 'assets/ba-tucson-after.webp',
-      alt: 'יונדאי טוסון נקייה ומבריקה אחרי הטיפול', beforeAlt: 'יונדאי טוסון לפני הטיפול, מכוסה אבק' }
+      alt: 'מושבים אחוריים נקיים ביונדאי אחרי הטיפול', beforeAlt: 'מושב אחורי ביונדאי לפני הטיפול, עם כתמים' }
   ];
 
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

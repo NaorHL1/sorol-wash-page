@@ -93,3 +93,7 @@ Every adjacent act produces a distinct emotion. No two adjacent acts share a fee
 - Pairs are now three, in this order: Suzuki (labelled as colour enhancement and full detailing), Hyundai interior, Hyundai exterior. The Cupra exterior pair was removed.
 - On phones the before/after frame is 4:5 and full width, so the change is easier to see. Spacing above and below the result is tighter.
 - Wordmark: SOROL WASH on one line in a chrome gradient, without the skew or drop shadow that blurred the text.
+
+## Update: two pairs, new polish card photo (2026-11-07)
+- Before/after is down to two pairs: Suzuki (colour enhancement and full detailing) and Hyundai interior. The Hyundai exterior pair was removed.
+- The "השבחת צבע ודיטיילינג מלא" service card now shows a full-car photo (Suzuki, rear three-quarter, plate blurred) that is not used anywhere else on the page.
