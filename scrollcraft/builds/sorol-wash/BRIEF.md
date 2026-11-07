@@ -105,3 +105,7 @@ Every adjacent act produces a distinct emotion. No two adjacent acts share a fee
 ## Update: font flash fixed, header and spacing tweaks (2026-11-07)
 - Reload flash: the logo and some text drew in a fallback font, then jumped when the web fonts arrived (logo text went 134px to 182px wide). Now all five fonts are preloaded and the page is held invisible for a beat until they are ready, so it appears once in its final fonts (layout shift 0 on a throttled connection; failsafe at 2.5s). Fonts are cached for a year via `_headers` (Netlify). The unused Syncopate 400 file was removed.
 - WASH takes the button cyan; the name and tagline are larger. The interlude "התוצאה מדברת בעד עצמה" is compact. Small text is larger on phones, and the before/after frame is bigger (3:4, nearly edge to edge).
+
+## Update: interim legal pages (2026-11-07)
+- Business details are not final yet. The three legal pages no longer show bracketed placeholders. They name the business, give WhatsApp and phone as the contact route, say full legal details are sent on request via WhatsApp, and carry a visible "being updated" note. All three stay `noindex`.
+- Still required before a formal launch: an Israeli lawyer's review, the legal name, ID number and address, and the cancellation terms.
