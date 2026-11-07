@@ -119,21 +119,28 @@ h1, h2, h3, p { margin: 0; }
 .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit; }
 .brand img {
   width: 2.5rem; height: 2.5rem; border-radius: 50%; flex: none;
-  box-shadow: 0 0 0 2px #080B10, 0 0 0 3px rgba(0, 229, 255, 0.75), 0 0 1rem rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 0 2px #080B10, 0 0 0 3px rgba(214, 222, 232, 0.75), 0 0 1rem rgba(214, 222, 232, 0.16);
 }
-.brand__text { display: flex; flex-direction: column; gap: 0.18rem; line-height: 1; direction: ltr; text-align: start; }
+.brand__text { display: flex; flex-direction: column; gap: 0.3rem; line-height: 1; direction: ltr; text-align: start; }
+/* The wordmark echoes the logo: a heavy, wide, slanted SOROL in brushed silver over a thin, spaced WASH. */
 .brand__name {
-  font-family: var(--sc-font-display); font-weight: 800; font-size: 1.08rem; letter-spacing: 0.2em;
-  display: flex; gap: 0.38em; text-transform: uppercase;
+  display: flex; align-items: baseline; gap: 0.7em; text-transform: uppercase;
+  font-family: 'Syncopate', var(--sc-font-display), sans-serif; font-size: 1.12rem;
+}
+.brand__name i {
+  font-style: normal; font-weight: 700; letter-spacing: 0.02em; display: inline-block; transform: skewX(-11deg);
+  padding-inline-end: 0.12em;
+  background: linear-gradient(180deg, #FFFFFF 0%, #E8EDF3 24%, #98A3B1 50%, #F3F6FA 66%, #B4BEC9 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #D8DEE6;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.55));
 }
 .brand__name b {
-  font-weight: 800;
-  background: linear-gradient(100deg, #00E5FF 0%, #7DF3FF 100%); -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: #00E5FF;
+  font-weight: 400; font-size: 0.56em; letter-spacing: 0.5em; color: #CDD4DD;
+  background: none; -webkit-text-fill-color: currentColor;
 }
-.brand__tag { font-size: 0.74rem; font-weight: 500; letter-spacing: 0; direction: rtl; text-align: right; color: #9BA8B8; }
+.brand__tag { font-size: 0.74rem; font-weight: 500; letter-spacing: 0; direction: rtl; text-align: right; color: #A9B4C1; }
 .brand--lg img { width: 3.75rem; height: 3.75rem; }
-.brand--lg .brand__name { font-size: 1.4rem; }
+.brand--lg .brand__name { font-size: 1.55rem; }
 .brand--lg .brand__tag { font-size: 0.86rem; }
 @media (max-width: 380px) { .brand__tag { display: none; } .brand__name { font-size: 0.98rem; } }
 .site-bar__end { display: flex; align-items: center; gap: 0.75rem; }
@@ -342,7 +349,7 @@ h1, h2, h3, p { margin: 0; }
   padding: calc(var(--sc-bar-h) + 1rem) var(--sc-gutter) calc(var(--docket-h) + 1.25rem + env(safe-area-inset-bottom, 0px));
   will-change: opacity, transform;
 }
-.peak__phase--rail { padding-inline: 0; opacity: 0; visibility: hidden; pointer-events: none; }
+.peak__phase--rail { padding-inline: 0; }
 
 .ba { display: grid; grid-template-columns: minmax(16rem, 26rem) auto; gap: var(--sc-8); justify-content: center; align-items: center; }
 .ba__copy h2 { font-size: var(--sc-t-2xl); }
@@ -610,3 +617,17 @@ h1, h2, h3, p { margin: 0; }
 .foot__credit a { color: inherit; font-weight: 600; }
 .foot__credit a:hover { color: var(--sc-accent); }
 @media (max-width: 520px) { .tabs { display: grid; grid-template-columns: 1fr 1fr; } }
+
+/* act 4a: a plain section now, sized to one screen with room for the docket */
+.proof {
+  min-height: 100svh; display: flex; align-items: center;
+  padding-block: calc(var(--sc-bar-h) + var(--sc-6)) calc(var(--docket-h) + var(--sc-7) + env(safe-area-inset-bottom, 0px));
+}
+.proof .sc-wrap { display: flex; justify-content: center; }
+/* act 4b: tell the visitor what the scroll is doing */
+.rail-meta { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; margin-top: var(--sc-5); padding-inline: var(--sc-gutter); }
+.rail-hint { font-size: var(--sc-t-sm); color: var(--sc-ink-soft); transition: opacity 0.5s var(--sc-ease-out); }
+[data-sc-stage][data-moving="true"] .rail-hint { opacity: 0; }
+.rail-progress { width: min(18rem, 60vw); height: 3px; border-radius: 2px; background: rgba(244, 247, 251, 0.16); overflow: hidden; }
+.rail-progress__bar { display: block; height: 100%; background: var(--sc-accent); transform-origin: right center; transform: scaleX(0); }
+@media (prefers-reduced-motion: reduce) { .rail-meta { display: none; } .proof { min-height: 0; } }

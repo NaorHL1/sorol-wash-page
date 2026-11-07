@@ -84,3 +84,7 @@ Every adjacent act produces a distinct emotion. No two adjacent acts share a fee
 - Rail gallery: Suzuki rear, Cupra rear, two Mercedes, light leather interior, then the Instagram card.
 - Every readable licence plate (the client's and other cars') is blurred before publishing. A Cupra interior photo showing driver hand controls was deliberately not used.
 - Asset names say what the file is: `ba-<car>-before|after`, `gallery-*`, `card-*`, `reel-showcase*`, `hero-*`.
+
+## Update: act 4 split, silver wordmark (2026-11-07)
+- Act 4 was one pinned scene (wipe, then gallery). Dead scroll: once a visitor touched the wipe, scrolling moved nothing until the gallery phase. It is now two parts: 4a "proof" is a normal section (the wipe plays itself once on entry, then it is the visitor's), and 4b is a pinned gallery that moves sideways from the first scroll to the last, eased (never jumps), with a hint that fades after the first flick and a progress bar.
+- Wordmark: Syncopate (self-hosted, OFL) in brushed-silver gradient, slanted SOROL over a thin, spaced WASH, echoing the logo lettering. The logo ring is silver instead of cyan.

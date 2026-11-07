@@ -32,7 +32,7 @@
 <header class="site-bar">
   <a class="brand" href="#top" aria-label="Sorol Wash, לראש העמוד">
     <img src="assets/logo.webp" width="38" height="38" alt="">
-    <span class="brand__text"><span class="brand__name">SOROL<b>WASH</b></span><span class="brand__tag">שטיפה עד הבית</span></span>
+    <span class="brand__text"><span class="brand__name"><i>SOROL</i><b>WASH</b></span><span class="brand__tag">שטיפה עד הבית</span></span>
   </a>
   <div class="site-bar__end">
     <span class="site-bar__area" id="areaLabel">הגעה עד הבית והמשרד</span>
@@ -187,39 +187,41 @@
     </div>
   </section>
 
-  <!-- ACT 4 · THE PEAK: wipe, then rail (page-driven phases) -->
-  <section id="peak" class="peak section--night" data-sc-act="pin" data-sc-span="3.2">
-    <div data-sc-stage id="peakStage">
-
-      <div class="peak__phase peak__phase--wipe" id="phaseWipe">
-        <div class="ba">
-          <div class="ba__copy">
-            <h2 class="sc-display">הוכחה, לא הבטחה.</h2>
-            <p class="sc-body">גררו את הידית ובדקו בעצמכם.</p>
-            <div class="tabs" role="tablist" aria-label="בחירת רכב">
-              <button type="button" role="tab" class="tab" id="tab-0" aria-selected="true" aria-controls="baFrame" data-ba="0">יונדאי · פנים</button>
-              <button type="button" role="tab" class="tab" id="tab-1" aria-selected="false" aria-controls="baFrame" tabindex="-1" data-ba="1">סוזוקי · חוץ</button>
-              <button type="button" role="tab" class="tab" id="tab-2" aria-selected="false" aria-controls="baFrame" tabindex="-1" data-ba="2">קופרה · חוץ</button>
-              <button type="button" role="tab" class="tab" id="tab-3" aria-selected="false" aria-controls="baFrame" tabindex="-1" data-ba="3">יונדאי · חוץ</button>
-            </div>
-          </div>
-
-          <div class="ba-frame" id="baFrame" role="tabpanel" aria-label="השוואת לפני ואחרי">
-            <img id="baAfter" src="assets/ba-tucson-interior-after.webp" width="1000" height="1333" alt="מושבים אחוריים נקיים ביונדאי אחרי הטיפול">
-            <div class="ba-before" id="baBefore">
-              <img id="baBeforeImg" src="assets/ba-tucson-interior-before.webp" width="1000" height="1333" alt="מושב אחורי ביונדאי לפני הטיפול, עם כתמים">
-              <div class="ba-ph" id="baPh" hidden>תמונת "לפני" בקרוב</div>
-            </div>
-            <span class="badge badge--before">לפני</span>
-            <span class="badge badge--after">אחרי</span>
-            <button type="button" class="ba-handle" id="baHandle" role="slider" aria-label="הזזת קו ההשוואה"
-                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-              <span class="ba-knob"><svg class="ico ico--stroke" aria-hidden="true"><use href="#i-drag"/></svg></span>
-            </button>
-          </div>
+  <!-- ACT 4a · THE PROOF: a normal section. The wipe plays itself once, then it is yours to drag. -->
+  <section id="proof" class="proof section--night" data-sc-act="flow" aria-label="לפני ואחרי">
+    <div class="sc-wrap">
+      <div class="ba">
+      <div class="ba__copy">
+        <h2 class="sc-display">הוכחה, לא הבטחה.</h2>
+        <p class="sc-body">גררו את הידית ובדקו בעצמכם.</p>
+        <div class="tabs" role="tablist" aria-label="בחירת רכב">
+          <button type="button" role="tab" class="tab" id="tab-0" aria-selected="true" aria-controls="baFrame" data-ba="0">יונדאי · פנים</button>
+          <button type="button" role="tab" class="tab" id="tab-1" aria-selected="false" aria-controls="baFrame" tabindex="-1" data-ba="1">סוזוקי · חוץ</button>
+          <button type="button" role="tab" class="tab" id="tab-2" aria-selected="false" aria-controls="baFrame" tabindex="-1" data-ba="2">קופרה · חוץ</button>
+          <button type="button" role="tab" class="tab" id="tab-3" aria-selected="false" aria-controls="baFrame" tabindex="-1" data-ba="3">יונדאי · חוץ</button>
         </div>
       </div>
 
+      <div class="ba-frame" id="baFrame" role="tabpanel" aria-label="השוואת לפני ואחרי">
+        <img id="baAfter" src="assets/ba-tucson-interior-after.webp" width="1000" height="1333" alt="מושבים אחוריים נקיים ביונדאי אחרי הטיפול">
+        <div class="ba-before" id="baBefore">
+          <img id="baBeforeImg" src="assets/ba-tucson-interior-before.webp" width="1000" height="1333" alt="מושב אחורי ביונדאי לפני הטיפול, עם כתמים">
+          <div class="ba-ph" id="baPh" hidden>תמונת "לפני" בקרוב</div>
+        </div>
+        <span class="badge badge--before">לפני</span>
+        <span class="badge badge--after">אחרי</span>
+        <button type="button" class="ba-handle" id="baHandle" role="slider" aria-label="הזזת קו ההשוואה"
+                aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <span class="ba-knob"><svg class="ico ico--stroke" aria-hidden="true"><use href="#i-drag"/></svg></span>
+        </button>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ACT 4b · THE WORK: pinned. Scrolling slides the gallery sideways from the first pixel to the last. -->
+  <section id="peak" class="peak section--night" data-sc-act="pin" data-sc-span="3">
+    <div data-sc-stage id="peakStage">
       <div class="peak__phase peak__phase--rail" id="phaseRail">
         <div class="rail-viewport" id="railViewport">
           <div class="rail" id="rail">
@@ -258,8 +260,11 @@
             </a>
           </div>
         </div>
+        <div class="rail-meta" aria-hidden="true">
+          <p class="rail-hint" id="railHint">גוללים למטה והגלריה זזה הצידה</p>
+          <div class="rail-progress"><span class="rail-progress__bar" id="railBar"></span></div>
+        </div>
       </div>
-
     </div>
   </section>
 
@@ -319,7 +324,7 @@
       <div class="foot__brand">
         <a class="brand brand--lg" href="#top" aria-label="Sorol Wash, לראש העמוד">
           <img src="assets/logo.webp" width="56" height="56" alt="" loading="lazy" decoding="async">
-          <span class="brand__text"><span class="brand__name">SOROL<b>WASH</b></span><span class="brand__tag">שטיפה עד הבית</span></span>
+          <span class="brand__text"><span class="brand__name"><i>SOROL</i><b>WASH</b></span><span class="brand__tag">שטיפה עד הבית</span></span>
         </a>
         <p>שטיפת פרימיום ודיטיילינג עד הבית והמשרד. מגיעים אליך עם כל הציוד.</p>
         <a class="btn btn--primary" data-wa href="#" target="_blank" rel="noopener">

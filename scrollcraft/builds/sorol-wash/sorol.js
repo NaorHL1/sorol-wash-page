@@ -184,7 +184,7 @@
     docket.classList.toggle('is-on', on);
   }
 
-  /* ---- 3. before/after wipe: scroll drives it until the first touch -------- */
+  /* ---- 3. before/after wipe: plays itself once on entry, then belongs to the visitor -------- */
   var peak = $('#peak'), stage = $('#peakStage');
   var frame = $('#baFrame'), handle = $('#baHandle');
   var afterImg = $('#baAfter'), beforeImg = $('#baBeforeImg'), ph = $('#baPh');
@@ -249,9 +249,25 @@
     });
   });
   setSplit(reduce ? 50 : 18);
+  (function demoWipe() {
+    if (reduce || !('IntersectionObserver' in window)) { if (!reduce) setSplit(50); return; }
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      io.disconnect();
+      var t0 = performance.now(), D = 2600;
+      var ease = function (t) { return t * t * (3 - 2 * t); };
+      (function step(now) {
+        if (userControlled) return;
+        var t = clamp((now - t0) / D);
+        setSplit(t < 0.6 ? lerp(18, 84, ease(t / 0.6)) : lerp(84, 50, ease((t - 0.6) / 0.4)));
+        if (t < 1) requestAnimationFrame(step);
+      })(t0);
+    }, { threshold: 0.6 });
+    io.observe(frame);
+  })();
 
-  /* ---- 4. act 4 phases: wipe (p 0 to .5), crossfade, rail (p .54 to .98) --- */
-  var phaseWipe = $('#phaseWipe'), phaseRail = $('#phaseRail');
+  /* ---- 4. act 4b: the pinned gallery. Scroll maps straight onto sideways travel, eased so it glides. --- */
+  var phaseRail = $('#phaseRail');
   var rail = $('#rail'), railVp = $('#railViewport'), reel = $('#reelVideo');
   var railOver = 0;
   function measureRail() { railOver = Math.max(0, rail.offsetWidth - railVp.clientWidth); }
@@ -269,32 +285,26 @@
     } else loadReel();
   }
 
-  var lastKey = '';
+  var lastKey = '', railCur = 0, railBar = $('#railBar'), lastMoving = '';
   function tickPeak() {
     if (reduce) { stage.setAttribute('data-sc-verify-state', 'static'); return; }
     var p = pOf(peak);
-    var f = clamp((p - 0.44) / 0.10);                 /* 0 = wipe, 1 = rail */
-    var q = clamp((p - 0.54) / 0.40);                 /* rail travel, then a short hold */
-    if (!userControlled) setSplit(lerp(18, 82, clamp((p - 0.04) / 0.40)));
-
-    phaseWipe.style.opacity = String(1 - f);
-    phaseWipe.style.transform = 'translate3d(0,' + (-f * 24).toFixed(1) + 'px,0)';
-    phaseWipe.style.visibility = f >= 1 ? 'hidden' : 'visible';
-    phaseWipe.style.pointerEvents = f > 0.5 ? 'none' : 'auto';
-
-    phaseRail.style.opacity = String(f);
-    phaseRail.style.transform = 'translate3d(0,' + ((1 - f) * 24).toFixed(1) + 'px,0)';
-    phaseRail.style.visibility = f <= 0 ? 'hidden' : 'visible';
-    phaseRail.style.pointerEvents = f > 0.5 ? 'auto' : 'none';
-    rail.style.transform = 'translate3d(' + (railOver * q).toFixed(1) + 'px,0,0)';
+    /* no dead zone: travel starts with the pin and ends just before it releases */
+    var target = railOver * clamp(p / 0.92);
+    var d = target - railCur;
+    railCur = Math.abs(d) < 0.4 ? target : railCur + d * 0.16;
+    rail.style.transform = 'translate3d(' + railCur.toFixed(1) + 'px,0,0)';
+    if (railBar) railBar.style.transform = 'scaleX(' + (railOver ? Math.min(1, railCur / railOver) : 0).toFixed(4) + ')';
+    var moving = railCur > railOver * 0.1 ? 'true' : 'false';   /* keep the hint up for the first flick or two */
+    if (moving !== lastMoving) { stage.dataset.moving = moving; lastMoving = moving; }
 
     if (reel) {
-      if (f > 0.5) { if (reel.paused && reel.getAttribute('src')) { var pr = reel.play(); if (pr && pr.catch) pr.catch(function () {}); } }
+      if (p > 0.02 && p < 0.99) { if (reel.paused && reel.getAttribute('src')) { var pr = reel.play(); if (pr && pr.catch) pr.catch(function () {}); } }
       else if (!reel.paused) reel.pause();
     }
 
     /* telemetry so the verification harness can see this act is alive */
-    var key = Math.round(split) + '|' + Math.round(railOver * q) + '|' + f.toFixed(2);
+    var key = Math.round(railCur) + '|' + Math.round(split);
     if (key !== lastKey) { stage.setAttribute('data-sc-verify-state', key); lastKey = key; }
   }
 
